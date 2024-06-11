@@ -16,5 +16,3 @@ function countChar(str, letter){
 
 console.log(countBs("BOB"));
 console.log(countChar("kakkerlak", "k"));
-
-
