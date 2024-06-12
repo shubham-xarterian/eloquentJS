@@ -1,20 +1,25 @@
-function countBs(str){
-    let counter = 0;
-    for(let i = 0; i < str.length; i++){
-        if(str[i] == "B") counter++
+let obj = {here: {is: "an"}, object: 2};
+console.log(deepEqual(obj, obj));
+
+console.log(deepEqual(obj, {here: 1, object: 2}));
+
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
+
+
+function deepEqual(a, b){
+    if(a === b) return true;
+
+    if(a == null || b == null || typeof a !== "object" || typeof b !== "object") return false;
+
+    let keysA = Object.keys(a);
+    let keysB = Object.keys(b);
+
+    if(keysA.length !== keysB.length) return false;
+
+    for(key of keysA){
+        if(!keysB.includes(key) || !deepEqual(a[key], b[key])) return false;
     }
-    return counter;
+
+    return true;
+
 }
-
-function countChar(str, letter){
-    let counter = 0;
-    for(let  i = 0;i < str.length;i++){
-        if(str[i] == letter) counter++
-    }
-    return counter;
-}
-
-console.log(countBs("BOB"));
-console.log(countChar("kakkerlak", "k"));
-
-
